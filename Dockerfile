@@ -27,6 +27,7 @@ RUN set -eux \
     && apk add --no-cache --virtual .build-deps \
         \
         gdal-dev \
+        postgresql${PG_MAJOR}-dev \
         geos-dev \
         proj-dev \
         proj-util \
@@ -58,7 +59,8 @@ RUN set -eux \
     && mkdir -p /usr/src/pgvector \
     && cd /usr/src/pgvector \
     && git clone --branch v0.5.1 https://github.com/pgvector/pgvector.git . \
-    && make \
+    && make clean \
+    && make OPTFLAGS="" \
     && make install \
 # build PostGIS - with Link Time Optimization (LTO) enabled
     && cd /usr/src/postgis \
