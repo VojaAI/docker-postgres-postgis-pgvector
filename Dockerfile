@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=postgres:14-alpine3.18
+ARG BASE_IMAGE=postgres:15-alpine3.18
 FROM ${BASE_IMAGE}
 
 LABEL maintainer="Voja AI - https://voja.ai" \
